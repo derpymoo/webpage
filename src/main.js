@@ -1,9 +1,13 @@
 import "./styles.css";
 
 (function () {
+  // Footer year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // -----------------------
+  // Contact form
+  // -----------------------
   const form = document.getElementById("contactForm");
   const hint = document.getElementById("formHint");
 
@@ -32,6 +36,9 @@ import "./styles.css";
     });
   }
 
+  // -----------------------
+  // Pixel button press effect
+  // -----------------------
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
     const el = document.activeElement;
