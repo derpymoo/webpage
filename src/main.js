@@ -1,5 +1,40 @@
 import "./styles.css";
 
+// -----------------------
+// Auto-hide top bar on hover near top
+// -----------------------
+const topbar = document.querySelector(".topbar");
+const hoverZone = document.querySelector(".topbar-hover-zone");
+
+let hideTimeout = null;
+
+function showTopbar() {
+  if (!topbar) return;
+  topbar.classList.add("is-visible");
+  clearTimeout(hideTimeout);
+}
+
+function hideTopbar() {
+  if (!topbar) return;
+  hideTimeout = setTimeout(() => {
+    topbar.classList.remove("is-visible");
+  }, 300);
+}
+
+if (topbar && hoverZone) {
+  // Hover near top edge
+  hoverZone.addEventListener("mouseenter", showTopbar);
+  hoverZone.addEventListener("mousemove", showTopbar);
+
+  // Hover directly on topbar
+  topbar.addEventListener("mouseenter", showTopbar);
+  topbar.addEventListener("mouseleave", hideTopbar);
+
+  // Move mouse away
+  hoverZone.addEventListener("mouseleave", hideTopbar);
+}
+
+
 (function () {
   // Footer year
   const yearEl = document.getElementById("year");
