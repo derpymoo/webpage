@@ -1,40 +1,5 @@
 import "./styles.css";
 
-// -----------------------
-// Auto-hide top bar on hover near top
-// -----------------------
-const topbar = document.querySelector(".topbar");
-const hoverZone = document.querySelector(".topbar-hover-zone");
-
-let hideTimeout = null;
-
-function showTopbar() {
-  if (!topbar) return;
-  topbar.classList.add("is-visible");
-  clearTimeout(hideTimeout);
-}
-
-function hideTopbar() {
-  if (!topbar) return;
-  hideTimeout = setTimeout(() => {
-    topbar.classList.remove("is-visible");
-  }, 300);
-}
-
-if (topbar && hoverZone) {
-  // Hover near top edge
-  hoverZone.addEventListener("mouseenter", showTopbar);
-  hoverZone.addEventListener("mousemove", showTopbar);
-
-  // Hover directly on topbar
-  topbar.addEventListener("mouseenter", showTopbar);
-  topbar.addEventListener("mouseleave", hideTopbar);
-
-  // Move mouse away
-  hoverZone.addEventListener("mouseleave", hideTopbar);
-}
-
-
 (function () {
   // Footer year
   const yearEl = document.getElementById("year");
@@ -70,6 +35,58 @@ if (topbar && hoverZone) {
       }
     });
   }
+
+  // -----------------------
+  // NEW: Scroll-based topbar show/hide
+  // -----------------------
+  const topbar = document.querySelector(".topbar");
+  let lastY = window.scrollY;
+  const SHOW_AT_TOP = 10;       // always show near top
+  const DELTA = 6;              // ignore tiny jitter
+  const COOLDOWN_MS = 60;       // reduce flicker
+  let lastTick = 0;
+
+  function setTopbarVisible(visible) {
+    if (!topbar) return;
+    topbar.classList.toggle("is-visible", visible);
+  }
+
+  // show initially
+  setTopbarVisible(true);
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const now = Date.now();
+      if (now - lastTick < COOLDOWN_MS) return;
+      lastTick = now;
+
+      const y = window.scrollY;
+
+      // Always show when near top
+      if (y <= SHOW_AT_TOP) {
+        setTopbarVisible(true);
+        lastY = y;
+        return;
+      }
+
+      const diff = y - lastY;
+
+      // Ignore tiny movements
+      if (Math.abs(diff) < DELTA) return;
+
+      if (diff > 0) {
+        // scrolling down -> hide
+        setTopbarVisible(false);
+      } else {
+        // scrolling up -> show
+        setTopbarVisible(true);
+      }
+
+      lastY = y;
+    },
+    { passive: true }
+  );
 
   // -----------------------
   // Pixel button press effect

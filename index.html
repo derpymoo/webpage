@@ -21,36 +21,22 @@
   <div class="crt" aria-hidden="true"></div>
   <a class="skip-link" href="#projects">Skip to Projects</a>
 
-  <header class="topbar" role="banner">
-    <div class="topbar__inner">
-      <a class="brand brand--clickable" href="#top" data-show="all" aria-label="Show all sections">
-        <span class="pixel-dot" aria-hidden="true"></span>
-        <span class="brand__name">PLAYER PROFILE</span>
-      </a>
+  <header class="topbar is-visible" role="banner">
+    <div class="topbar__inner topbar__inner--right">
+      <nav class="nav nav--right" aria-label="Primary navigation">
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link" href="#projects">Projects</a>
+        <a class="nav__link" href="#experience">Experience</a>
+        <a class="nav__link" href="#skills">Skills</a>
+        <a class="nav__link" href="#contact">Contact</a>
 
-      <div class="stats" aria-label="Status bar">
-        <div class="stat">
-          <span class="stat__label">HP</span>
-          <span class="stat__value">Hireable</span>
-        </div>
-        <div class="stat">
-          <span class="stat__label">XP</span>
-          <span class="stat__value">Projects</span>
-        </div>
-        <div class="stat">
-          <span class="stat__label">LVL</span>
-          <span class="stat__value">Student</span>
-        </div>
-      </div>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav__link" href="#projects" data-show="one">Projects</a>
-        <a class="nav__link" href="#experience" data-show="one">Experience</a>
-        <a class="nav__link" href="#skills" data-show="one">Skills</a>
-        <a class="nav__link" href="#contact" data-show="one">Contact</a>
+        <a class="nav__link nav__brand" href="#top" aria-label="Back to top">
+          PLAYER PROFILE
+        </a>
       </nav>
     </div>
   </header>
+
 
   <!-- Side rails -->
   <aside class="rail rail--left" aria-label="Social links">
@@ -73,44 +59,44 @@
 
   <main class="container" role="main" id="main">
     <!-- HERO -->
-    <section class="panel hero hero--landing" id="top" aria-label="Title screen" data-panel>
-      <div class="landing">
-        <p class="landing__kicker">Hi, my name is</p>
+    <section class="hero hero--landing" id="top" aria-label="Title screen">
+      <div class="landing landing--with-avatar">
 
-        <h1 class="landing__name">Zheng YiJie</h1>
+        <!-- Text -->
+        <div class="landing__text">
+          <p class="landing__kicker">Hi, my name is</p>
 
-        <h2 class="landing__tagline">
-          I build scalable systems and
-          <br />
-          digital solutions.
-        </h2>
+          <h1 class="landing__name">Zheng YiJie</h1>
 
-        <p class="landing__bio">
-          I’m a Computer Science undergraduate (NUS, expected Aug 2028) who builds automation workflows and
-          ships game/software projects. <a class="landing__link" href="#about" data-show="one">Press Start →</a>
-        </p>
+          <h2 class="landing__tagline">
+            I build scalable systems and
+            <br />
+            digital solutions.
+          </h2>
 
-        <div class="landing__cta" role="group" aria-label="Call to action">
-          <a class="btn btn--primary" href="#about" data-show="one">
-            <span aria-hidden="true">▶</span> Start (About)
-          </a>
+          <p class="landing__bio">
+            I’m a Computer Science undergraduate (NUS, expected Aug 2028) who builds
+            automation workflows and ships game/software projects.
+            <a class="landing__link" href="#about">Press Start →</a>
+          </p>
 
-          <a class="btn" href="/resume.pdf" download>
-            Resume (Download)
-          </a>
-
-          <a class="btn" href="#contact" data-show="one">Contact</a>
-
-          <button class="btn btn--ghost" type="button" id="showAllBtn">
-            View All Sections
-          </button>
+          <div class="landing__cta">
+            <a class="btn btn--primary" href="#about">
+              <span aria-hidden="true">▶</span> Start
+            </a>
+            <a class="btn" href="/resume.pdf" download>Resume</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
         </div>
 
-        <p class="hintText">
-          Tip: Use the navbar to open a single section. Press <span class="kbd">Esc</span> to view all.
-        </p>
+        <!-- Avatar -->
+        <div class="landing__avatar">
+          <img src="/avatar.png" alt="Pixel avatar of Zheng YiJie" />
+        </div>
+
       </div>
     </section>
+
 
     <section class="panel" id="about" aria-label="About" data-panel>
       <div class="panel__header">
