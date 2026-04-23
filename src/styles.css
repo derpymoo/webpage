@@ -572,6 +572,10 @@ textarea:focus-visible {
   justify-content: flex-end;
 }
 
+.project__date {
+  margin-top: 14px;
+}
+
 .tag {
   font-size: 8px;
   padding: 6px 8px;
